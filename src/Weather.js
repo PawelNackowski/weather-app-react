@@ -5,30 +5,28 @@ import { useRef, useState } from 'react';
 
 export const Weather = () => {
   const queryClient = useQueryClient();
-  const [newValue, setNewValue] = useState("");
+  const [newValue, setNewValue] = useState('');
   const inputRef = useRef(null);
   const [location, setLocation] = useState(null) 
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    if (newValue .trim() === "")
+    if (newValue.trim() === '')
       return 
     setLocation(newValue.trim());
   }
 
   const { isLoading, data, error } = useQuery({
-    queryKey: ['weather'],
-    queryFn: fetchApi,
+    queryKey: ['weather', location],
+    queryFn: () => fetchApi(location),
     enabled: !!location,
   });
 
   const refreshWeather = () => {
-    localStorage.removeItem('weather-${location}');
+    if (!location) return;
+    localStorage.removeItem(`weather-${location}`);
     queryClient.invalidateQueries(['weather', location]);
   };
-
-  if (isLoading) return <p>⏳ Ładowanie pogody...</p>;
-  if (error) return <p>❌ Wystąpił błąd: {error.message}</p>;
 
   return (
     <div>
@@ -39,8 +37,11 @@ export const Weather = () => {
           onChange={({ target }) => setNewValue(target.value)}
           placeholder='Wpisz miejscowość'
           />
-          <button>Szukaj</button>
+          <button type="submit">Szukaj</button>
       </form>
+
+        {isLoading && <p>⏳ Ładowanie pogody...</p>}
+        {error && <p>❌ Wystąpił błąd: {error.message}</p>}
 
       {data && location  (
         <>
