@@ -11,9 +11,8 @@ export const Weather = () => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    if (newValue.trim() === '')
-      return 
-    setLocation(newValue.trim());
+    if (newValue.trim() === '') return;
+      setLocation(newValue.trim());
   }
 
   const { isLoading, data, error } = useQuery({
@@ -43,13 +42,12 @@ export const Weather = () => {
         {isLoading && <p>⏳ Ładowanie pogody...</p>}
         {error && <p>❌ Wystąpił błąd: {error.message}</p>}
 
-      {data && location  (
+      {data && location && (
         <>
         <h1>🌍 Pogoda w {location}</h1>
         <p>🌡️ Temperatura: {data.temperature} °C</p>
         <p>💧 Wilgotność: {data.humidity} %</p>
         <p>💨 Wiatr: {data.windSpeed} m/s</p>
-        {console.log(newValue)};
         <button onClick={refreshWeather}>🔄 Odśwież dane</button>
         </>
       )}
