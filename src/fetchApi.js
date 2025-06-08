@@ -9,7 +9,7 @@ export const fetchApi = async (location) => {
     return JSON.parse(cached);
   }
 
-  const API_URL = `https://api.tomorrow.io/v4/weather/realtime?location=${location}&apikey=${apiKey}`;
+  const API_URL = `https://api.tomorrow.io/v4/weather/realtime?location=${location}&apikey=${apiKey}&fields=temperature,humidity,windSpeed,weatherCodeDay`;
   const response = await fetch(API_URL);
 
   if (!response.ok) {
@@ -18,8 +18,9 @@ export const fetchApi = async (location) => {
 
   const json = await response.json();
   const weatherValues = json.data.values;
+  const weatherCode = weatherValues.weatherCodeDay;
 
-  localStorage.setItem(cacheKey, JSON.stringify(weatherValues));
+  localStorage.setItem(cacheKey, JSON.stringify({ ...weatherValues, weatherCode }));
   console.log('🌐 Dane z API i zapisane do localStorage');
 
   return weatherValues;
