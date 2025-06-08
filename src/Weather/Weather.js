@@ -1,7 +1,7 @@
-
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { fetchApi } from './fetchApi';
+import { fetchApi } from '../fetchApi';
 import { useRef, useState } from 'react';
+import { StyledForm, Wrapper } from './style';
 
 export const Weather = () => {
   const queryClient = useQueryClient();
@@ -29,7 +29,8 @@ export const Weather = () => {
 
   return (
     <div>
-      <form onSubmit= {onFormSubmit} >
+      <Wrapper>
+      <StyledForm onSubmit= {onFormSubmit} >
         <input 
           ref={inputRef}
           value={newValue} 
@@ -37,20 +38,29 @@ export const Weather = () => {
           placeholder='Wpisz miejscowość'
           />
           <button type="submit">Szukaj</button>
-      </form>
-
+      </StyledForm>
+        
         {isLoading && <p>⏳ Ładowanie pogody...</p>}
         {error && <p>❌ Wystąpił błąd: {error.message}</p>}
 
       {data && location && (
         <>
-        <h1>🌍 Pogoda w {location}</h1>
+
+       <img
+  src={`https://www.tomorrow.io/images/weather-icons/${data.weatherCode}.svg`}
+  alt={`Pogoda: ${data.weatherCode}`}
+  width={64}
+  height={64}
+/>
+{console.log(data.weatherCode)}
+        <h1> Pogoda {location}</h1>
         <p>🌡️ Temperatura: {data.temperature} °C</p>
         <p>💧 Wilgotność: {data.humidity} %</p>
-        <p>💨 Wiatr: {data.windSpeed} m/s</p>
+        <p>💨 Wiatr: {data.windSpeed} m/s</p> *
         <button onClick={refreshWeather}>🔄 Odśwież dane</button>
         </>
       )}
+      </Wrapper>
     </div>
   );
 };
