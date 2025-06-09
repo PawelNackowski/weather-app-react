@@ -2,6 +2,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { fetchApi } from '../fetchApi';
 import { useRef, useState } from 'react';
 import { StyledForm, Wrapper } from './style';
+import {weatherCodes} from './weatherIconMap';
 
 export const Weather = () => {
   const queryClient = useQueryClient();
@@ -26,10 +27,14 @@ export const Weather = () => {
     localStorage.removeItem(`weather-${location}`);
     queryClient.invalidateQueries(['weather', location]);
   };
-
+  const getWeatherIcon = (code) => {
+    if (!weatherCodes) return null;
+    const weather = weatherCodes.find(w => w.code === code);
+    return weather ? weather.url : null;
+  };
   return (
-    <div>
-      <Wrapper>
+    <div>  
+    <Wrapper>
       <StyledForm onSubmit= {onFormSubmit} >
         <input 
           ref={inputRef}
@@ -45,14 +50,7 @@ export const Weather = () => {
 
       {data && location && (
         <>
-
-       <img
-  src={`https://www.tomorrow.io/images/weather-icons/${data.weatherCode}.svg`}
-  alt={`Pogoda: ${data.weatherCode}`}
-  width={64}
-  height={64}
-/>
-{console.log(data.weatherCode)}
+      <img src={getWeatherIcon(data.weatherCode)} alt="Pogoda" width={64} height={64} />
         <h1> Pogoda {location}</h1>
         <p>🌡️ Temperatura: {data.temperature} °C</p>
         <p>💧 Wilgotność: {data.humidity} %</p>
