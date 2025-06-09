@@ -23,6 +23,7 @@ export const StyledForm = styled.form`
         border-radius: 0 25px 25px 0;
         background-color:rgb(44, 42, 177);
         color: white;
-        font-weight: boldy;
+        font-weight: bold;
     }
+
 `
