@@ -1,14 +1,15 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { fetchApi } from '../fetchApi';
 import { useRef, useState } from 'react';
-import { StyledForm, Wrapper } from './style';
+import { StyledButtonForm, Header, Image, StyledButtonRefresh, StyledForm, StyledInput, Wrapper } from './style';
+import Sunny from "./png/10000_clear_large.png";
 import {weatherCodes} from './weatherIconMap';
 
-export const Weather = () => {
+export const Weather = ({defaultLocation}) => {
   const queryClient = useQueryClient();
-  const [newValue, setNewValue] = useState('');
+  const [newValue, setNewValue] = useState(defaultLocation);
   const inputRef = useRef(null);
-  const [location, setLocation] = useState(null) 
+  const [location, setLocation] = useState(defaultLocation) 
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -36,13 +37,13 @@ export const Weather = () => {
     <div>  
     <Wrapper>
       <StyledForm onSubmit= {onFormSubmit} >
-        <input 
+        <StyledInput 
           ref={inputRef}
           value={newValue} 
           onChange={({ target }) => setNewValue(target.value)}
           placeholder='Wpisz miejscowość'
           />
-          <button type="submit">Szukaj</button>
+          <StyledButtonForm type="submit">Szukaj</StyledButtonForm>
       </StyledForm>
         
         {isLoading && <p>⏳ Ładowanie pogody...</p>}
@@ -50,14 +51,17 @@ export const Weather = () => {
 
       {data && location && (
         <>
-      <img src={getWeatherIcon(data.weatherCode)} alt="Pogoda" width={64} height={64} />
-        <h1> Pogoda {location}</h1>
+      {/* <img src={getWeatherIcon(data.weatherCode)} alt="Pogoda" width={64} height={64} /> */}
+      <Image src={Sunny} alt="Pogoda" />
+        <Header> 
+          {location}
+        </Header>
         <p>🌡️ Temperatura: {data.temperature} °C</p>
         <p>💧 Wilgotność: {data.humidity} %</p>
-        <p>💨 Wiatr: {data.windSpeed} m/s</p> *
-        <button onClick={refreshWeather}>🔄 Odśwież dane</button>
+        <p>💨 Wiatr: {data.windSpeed} m/s</p>
         </>
       )}
+      <StyledButtonRefresh onClick={refreshWeather}>🔄 Odśwież dane</StyledButtonRefresh>
       </Wrapper>
     </div>
   );
