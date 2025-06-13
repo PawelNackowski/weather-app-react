@@ -22,32 +22,36 @@ export const StyledForm = styled.form`
     
     `
 export const Header = styled.h1`
-    margin: 10px;
+    font-size: 26px;
+    margin: 8px;
     text-transform: capitalize;
 `
 
 export const Image = styled.img`
     width: 64px;
     height: 64px;
-    margin-top: 10px;
+    margin-top: 18px;
 `
 
 export const StyledInput = styled.input`
     text-align: center;
     padding: 6px;
-    border-radius: 25px 0 0 25px;
+    border-radius: 12px 0 0 12px;
+    border: none;
 `
 export const StyledButtonForm = styled.button`
     text-align: center;
     padding: 6px;
-    border-radius: 0 25px 25px 0;
-    background-color:rgb(4, 0, 255);
-    color: white;
-    font-weight: bold;
+    padding-right: 10px;
+    border-radius: 0 12px 12px 0;
+    background-color:rgb(255, 255, 255);
     border: none;
+    border-left: 1px solid black;
+    font-weight: bold;
     cursor: pointer;
     &:hover {
-        background-color: rgb(0, 0, 200);
+        background-color: rgb(87, 87, 204);
+        color: white;
     }
     &:active {
         background-color: rgb(0, 0, 150);
@@ -61,7 +65,7 @@ export const WeatherDetails = styled.div`
 export const StyledButtonRefresh = styled.button`
     margin-top: 10px;
     padding:6px 10px 6px 10px;
-    border-radius: 25px;
+    border-radius: 12px;
     background-color:rgb(4, 0, 255);
     color: white;
     font-weight: bold;
