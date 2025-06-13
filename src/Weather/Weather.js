@@ -7,7 +7,7 @@ import {weatherCodes} from './weatherIconMap';
 
 export const Weather = ({defaultLocation}) => {
   const queryClient = useQueryClient();
-  const [newValue, setNewValue] = useState(defaultLocation);
+  const [newValue, setNewValue] = useState("");
   const inputRef = useRef(null);
   const [location, setLocation] = useState(defaultLocation) 
 
@@ -15,6 +15,7 @@ export const Weather = ({defaultLocation}) => {
     event.preventDefault();
     if (newValue.trim() === '') return;
       setLocation(newValue.trim());
+      setNewValue("");
   }
 
   const { isLoading, data, error } = useQuery({
