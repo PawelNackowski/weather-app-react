@@ -22,6 +22,10 @@ export const StyledForm = styled.form`
     
     `
 export const Header = styled.h1`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
     font-size: 26px;
     margin: 8px;
     text-transform: capitalize;
