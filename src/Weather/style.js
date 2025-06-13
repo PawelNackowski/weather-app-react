@@ -55,6 +55,7 @@ export const StyledButtonForm = styled.button`
     }
     &:active {
         background-color: rgb(0, 0, 150);
+        color: white;
     }
 `
 
@@ -66,18 +67,19 @@ export const StyledButtonRefresh = styled.button`
     margin-top: 10px;
     padding:6px 10px 6px 10px;
     border-radius: 12px;
-    background-color:rgb(4, 0, 255);
-    color: white;
+    background-color:rgb(255, 255, 255);
     font-weight: bold;
     border: none;
     cursor: pointer;
     &:hover {
-        background-color: rgb(0, 0, 200);
+        background-color: rgb(87, 87, 204);
+        color: white;
         transform: scale(1.1);
         transition: transform 0.1s;
     }
     &:active {
         background-color: rgb(0, 0, 150);
+        color: white;
         transform: scale(0.98);
     }
 `
