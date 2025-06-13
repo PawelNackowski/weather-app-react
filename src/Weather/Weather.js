@@ -1,7 +1,7 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { fetchApi } from '../fetchApi';
 import { useRef, useState } from 'react';
-import { StyledButtonForm, Header, Image, StyledButtonRefresh, StyledForm, StyledInput, Wrapper } from './style';
+import { StyledButtonForm, Header, Image, StyledButtonRefresh, StyledForm, StyledInput, Wrapper, WeatherDetails } from './style';
 import Sunny from "./png/10000_clear_large.png";
 import {weatherCodes} from './weatherIconMap';
 
@@ -56,9 +56,11 @@ export const Weather = ({defaultLocation}) => {
         <Header> 
           {location}
         </Header>
-        <p>🌡️ Temperatura: {data.temperature} °C</p>
-        <p>💧 Wilgotność: {data.humidity} %</p>
-        <p>💨 Wiatr: {data.windSpeed} m/s</p>
+        <WeatherDetails>
+          🌡️ {data.temperature} °C 
+          💧 {data.humidity} %
+          💨 {data.windSpeed} m/s
+        </WeatherDetails>
         </>
       )}
       <StyledButtonRefresh onClick={refreshWeather}>🔄 Odśwież dane</StyledButtonRefresh>

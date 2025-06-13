@@ -54,6 +54,10 @@ export const StyledButtonForm = styled.button`
     }
 `
 
+export const WeatherDetails = styled.div`
+    padding: 10px 0;
+`
+
 export const StyledButtonRefresh = styled.button`
     margin-top: 10px;
     padding:6px 10px 6px 10px;
