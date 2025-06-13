@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: inherit;
     }
     body {
+        font-family: "Open Sans", sans-serif;
         min-height: 100vh;
         background: url("${backgroundImage}");
         background-size: cover;
