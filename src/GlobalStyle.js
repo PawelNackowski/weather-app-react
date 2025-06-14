@@ -15,6 +15,8 @@ export const GlobalStyle = createGlobalStyle`
         background: url("${backgroundImage}");
         background-size: cover;
         background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         ;
     }
 `
