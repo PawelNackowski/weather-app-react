@@ -52,8 +52,7 @@ export const Weather = ({defaultLocation}) => {
 
       {data && location && (
         <>
-      {/* <img src={getWeatherIcon(data.weatherCode)} alt="Pogoda" width={64} height={64} /> */}
-      <Image src={Sunny} alt="Pogoda" />
+      <img src={getWeatherIcon(data.weatherCode)} alt="Pogoda" width={64} height={64} />
         <Header> 
           {location}
         </Header>
@@ -64,7 +63,7 @@ export const Weather = ({defaultLocation}) => {
         </WeatherDetails>
         </>
       )}
-      <StyledButtonRefresh onClick={refreshWeather}>🔄 Odśwież dane</StyledButtonRefresh>
+      {/* <StyledButtonRefresh onClick={refreshWeather}>🔄 Odśwież dane</StyledButtonRefresh> */}
       </Wrapper>
     </div>
   );
