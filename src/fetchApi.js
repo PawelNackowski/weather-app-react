@@ -5,7 +5,6 @@ export const fetchApi = async (location) => {
   const cached = localStorage.getItem(cacheKey);
 
   if (cached) {
-    console.log(`📦 Dane z localStorage (${location})`);
     return JSON.parse(cached);
   }
 
@@ -21,7 +20,6 @@ export const fetchApi = async (location) => {
   const weatherCode = weatherValues.weatherCodeDay;
 
   localStorage.setItem(cacheKey, JSON.stringify({ ...weatherValues, weatherCode }));
-  console.log('🌐 Dane z API i zapisane do localStorage');
 
   return weatherValues;
 };
