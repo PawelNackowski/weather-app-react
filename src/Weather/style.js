@@ -28,7 +28,7 @@ export const Header = styled.h1`
     height: 70px;
     font-size: 26px;
     margin: 8px;
-    text-transform: capitalize;
+    text-transform:  uppercase;
 `
 
 export const Image = styled.img`
@@ -42,6 +42,7 @@ export const StyledInput = styled.input`
     padding: 6px;
     border-radius: 12px 0 0 12px;
     border: none;
+    color: black;
 `
 export const StyledButtonForm = styled.button`
     text-align: center;
