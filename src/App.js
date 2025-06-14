@@ -3,13 +3,11 @@ import { Weather } from "./Weather/Weather";
 
 function App() {
   return (
-    <>
-      <Wrapper>
-        <Weather defaultLocation="Warszawa"/>
-        <Weather defaultLocation="Nowy York"/>
-        <Weather defaultLocation="Tokio"/>
-      </Wrapper>
-    </>
+        <Wrapper>
+          <Weather defaultLocation="Warszawa"/>
+          <Weather defaultLocation="Nowy York"/>
+          <Weather defaultLocation="Tokio"/>
+        </Wrapper>
   );
 }
 
